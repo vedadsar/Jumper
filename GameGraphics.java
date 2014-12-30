@@ -4,6 +4,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.Date;
 
 import javax.swing.JButton;
@@ -20,29 +22,47 @@ public class GameGraphics extends JPanel implements ActionListener {
 	private int width;
 	private Body player;
 	private int scoreCounter;
-	private Date start;
-	
+	JButton reset;
 	
 	public GameGraphics(int heigth, int width) {
-		super();
-		
+		super();		
 		this.heigth = heigth;
 		this.width = width;
-		player = new Oval(width / 2, heigth - 100 - 40, 40, 40, Color.BLUE, 0,
+		player = new Oval(width / 2, heigth - 100 - 40, 20, 40, Color.BLUE, 0,
 				0, 0, 0, width, heigth - 100);
 		this.scoreCounter = 0;
 		elements = new Body[100];
 		animation = new Timer(1000 / 60, this);
 		elementsCounter = 100;
-
+		
+		reset = new JButton("RESET");
+		add(reset);
+		
+		
+		
 		animation.start();
-
-		start = new Date();
-
+	
 		addKeyListener(new KeyHandler());
-
+	
+	
 		createElements();
+		
+		reset.addMouseListener(new MouseAdapter() {
+			
+			@Override
+			public void mousePressed ( MouseEvent e){
+				
+			}
+			
+		});
+		
+	
 
+	}
+
+
+	public void setScoreCounter(int scoreCounter) {
+		this.scoreCounter = scoreCounter;
 	}
 
 	@Override
@@ -53,6 +73,7 @@ public class GameGraphics extends JPanel implements ActionListener {
 		g.setColor(new Color(54, 140, 22));
 		g.fill3DRect(0, 400, 500, 100, true);
 		int j = 0;
+		
 		for (int i = 0; i < elementsCounter; i++) {
 			elements[i].draw(g);
 			if (player.checkCollision(elements[i]) == true) {
@@ -60,15 +81,17 @@ public class GameGraphics extends JPanel implements ActionListener {
 				JOptionPane.showMessageDialog(null, "Izgubio si");
 				break;
 			}
-
+			// for petlja kojom brojimo skore 
 			for ( j = 0; j < elementsCounter; j++) {
-				if (elements[scoreCounter].getX() <= width/2) {
+				if (elements[scoreCounter].getX() <= player.getX()-player.getWidth()) {
 					scoreCounter = scoreCounter +1;
 					
 				}
 			}
 
 		}
+		
+					
 		player.draw(g);
 		g.drawString("Vas score je " + scoreCounter, 100, 100);
 

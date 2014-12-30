@@ -67,8 +67,8 @@ public class Body {
 		
 		if(this.getX() + speedX <= minX   && speedX < 0){
 			speedX = 0;
-			this.startPoint.setX(minX);
-			this.centerPoint.setX(minX + width/2);
+			this.startPoint.setX(minX-100);
+			this.centerPoint.setX(minX + width/2-100);
 		
 		}
 		//Uslovi za x kordinate, ne dozvoljavamo da se krece van okvira
