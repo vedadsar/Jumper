@@ -10,22 +10,25 @@ import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.Timer;
-
+/**
+ * Klasa u koju cemo ubaciti nase graficke elemente tj prepreke i naseg igraca.
+ * U njoj i pokrecemo igricu ( preko timera ).
+ * @author Vedad_2
+ *
+ */
 public class GameGraphics extends JPanel implements ActionListener {
 
-	private Timer animation;
-	private Body[] elements;
-	private int elementsCounter;
+	private Timer animation; //- Timer koji koristimo za animaciju igre
+	private Body[] elements; //- Niz elemenata, tj. 'prepreka'
+	private int elementsCounter; //- broj elemenata
 	private int heigth;
 	private int width;
 	private Body player;
 	private int scoreCounter;
-	private Date start;
-	
+
 	
 	public GameGraphics(int heigth, int width) {
 		super();
-		
 		this.heigth = heigth;
 		this.width = width;
 		player = new Player(width / 2, heigth - 100 - 40, 40, 40, Color.BLUE, 0,
@@ -34,14 +37,15 @@ public class GameGraphics extends JPanel implements ActionListener {
 		elements = new Body[100];
 		animation = new Timer(1000 / 60, this);
 		elementsCounter = 100;
-
+		
 		animation.start();
 
-		start = new Date();
+		
 
 		addKeyListener(new KeyHandler());
 
 		createElements();
+	
 
 	}
 
@@ -71,6 +75,7 @@ public class GameGraphics extends JPanel implements ActionListener {
 		}
 		player.draw(g);
 		g.drawString("Vas score je " + scoreCounter, 100, 100);
+		
 
 	}
 
@@ -95,7 +100,11 @@ public class GameGraphics extends JPanel implements ActionListener {
 		}
 
 	}
-
+/**
+ * Klasa koja ekstenda KeyAdapter tj da nas igrac skace na svaki key event.
+ * @author Vedad_2
+ *
+ */
 	private class KeyHandler extends KeyAdapter {
 
 		public void keyTyped(KeyEvent e) {

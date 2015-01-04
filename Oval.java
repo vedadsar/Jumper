@@ -13,7 +13,10 @@ public class Oval extends Body {
 	public void draw(Graphics g){
 		super.draw(g);
 		g.fillOval(super.getX(), super.getY(), super.getWidth(), super.getHeigth());
+		g.setColor(Color.ORANGE);
 		
+		g.fillOval(super.getX()+4, super.getY()+4, super.getWidth()-7, super.getHeigth()-7);
+		g.setColor(getColor());
 	}
 	
 	
