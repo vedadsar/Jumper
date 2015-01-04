@@ -28,7 +28,7 @@ public class GameGraphics extends JPanel implements ActionListener {
 		
 		this.heigth = heigth;
 		this.width = width;
-		player = new Oval(width / 2, heigth - 100 - 40, 40, 40, Color.BLUE, 0,
+		player = new Player(width / 2, heigth - 100 - 40, 40, 40, Color.BLUE, 0,
 				0, 0, 0, width, heigth - 100);
 		this.scoreCounter = 0;
 		elements = new Body[100];

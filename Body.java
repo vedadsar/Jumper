@@ -90,6 +90,14 @@ public class Body {
 		
 	}
 	
+	public Color getColor() {
+		return color;
+	}
+
+	public void setColor(Color color) {
+		this.color = color;
+	}
+
 	public int getX(){
 		return startPoint.getX();
 	}
