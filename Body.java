@@ -67,7 +67,7 @@ public class Body {
 		
 		if(this.getX() + speedX <= minX   && speedX < 0){
 			speedX = 0;
-			this.startPoint.setX(minX);
+			this.startPoint.setX(minX-150);
 			this.centerPoint.setX(minX + width/2);
 		
 		}
