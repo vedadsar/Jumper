@@ -1,4 +1,5 @@
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -59,6 +60,7 @@ public class GameGraphics extends JPanel implements ActionListener {
 		int j = 0;
 		for (int i = 0; i < elementsCounter; i++) {
 			elements[i].draw(g);
+			
 			if (player.checkCollision(elements[i]) == true) {
 				animation.stop();
 				JOptionPane.showMessageDialog(null, "Izgubio si");
@@ -74,7 +76,8 @@ public class GameGraphics extends JPanel implements ActionListener {
 
 		}
 		player.draw(g);
-		g.drawString("Vas score je " + scoreCounter, 100, 100);
+		g.setFont(new Font("Arial", Font.BOLD, 22));
+		g.drawString("Vas score je " + scoreCounter, 180, 100);
 		
 
 	}
